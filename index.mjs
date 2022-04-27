@@ -1,10 +1,11 @@
+#!/usr/bin/env node
+
 import { exec, spawn } from "child_process"
 import ipRegex from 'ip-regex'
 import sleep from 'p-sleep'
 import inquirer from 'inquirer'
 
 let suffix = ''
-
 
 function pexec(command) {
   return new Promise(function(resolve, reject) {

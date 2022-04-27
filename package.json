@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Connects ur Quest via ADB wifi",
   "main": "index.js",
+  "bin": {
+    "adbwifisetup": "./index.mjs"
+  },
   "scripts": {
     "connect": "node index.mjs"
   },
