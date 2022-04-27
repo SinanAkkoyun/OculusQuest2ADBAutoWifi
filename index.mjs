@@ -101,3 +101,6 @@ const dotsleep = async (sleepms, dots) => {
     console.log(err)
   }
 })().then(process.exit)
+
+
+// For when I can automagically enable ADB on the Quest standalone: https://github.com/eviltik/evilscan
