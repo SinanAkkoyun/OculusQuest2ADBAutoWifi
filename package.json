@@ -1,0 +1,19 @@
+{
+  "name": "adbautowifi",
+  "version": "1.0.0",
+  "description": "Connects ur Quest via ADB wifi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SinanAkkoyun/OculusQuest2ADBAutoWifi.git"
+  },
+  "author": "Sinan Akkoyun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SinanAkkoyun/OculusQuest2ADBAutoWifi/issues"
+  },
+  "homepage": "https://github.com/SinanAkkoyun/OculusQuest2ADBAutoWifi#readme"
+}
