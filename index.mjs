@@ -5,13 +5,6 @@ import inquirer from 'inquirer'
 
 let suffix = ''
 
-const keypress = async () => {
-  process.stdin.setRawMode(true)
-  return new Promise(resolve => process.stdin.once('data', () => {
-    process.stdin.setRawMode(false)
-    resolve()
-  }))
-}
 
 function pexec(command) {
   return new Promise(function(resolve, reject) {
@@ -25,7 +18,6 @@ function pexec(command) {
       });
   });
 }
-
 const getADBDevices = async () => {
   let devices = [];
 
@@ -41,14 +33,12 @@ const getADBDevices = async () => {
 
   return devices
 }
-
 const getIPConnected = devices => {
   for(let device of devices) {
     if(ipRegex().test(device.id) && device.status == 'device')
       return device
   }
 }
-
 const logDevices = devices => {
   if(devices) {
     devices.map(dev => {
@@ -56,7 +46,6 @@ const logDevices = devices => {
     })
   }
 }
-
 const dotsleep = async (sleepms, dots) => {
   for(let i=1;i<=dots;i++) {
     process.stdout.write('.')
@@ -66,10 +55,14 @@ const dotsleep = async (sleepms, dots) => {
 }
 
 ;(async () => {
-  const adbpath = (await inquirer.prompt({
-    type: "list", name: "path", message: "Choose your ADB path:",
-    choices: [ { name: "Unity", value: "unity" }, { name: "Default PATH", value: "default" } ]})).path
-
+  let adbpath = 'unity'
+  if(!adbpath) {
+    adbpath = (await inquirer.prompt({
+      type: "list", name: "path", message: "Choose your ADB path:",
+      choices: [ { name: "Unity", value: "unity" }, { name: "Default PATH", value: "default" } ]})).path
+  } else {
+    console.log(`[INFO] Defaulted to ADB path: ${adbpath}`)
+  }
   // await keypress()
   try {
     if(adbpath == 'unity') {
@@ -77,12 +70,18 @@ const dotsleep = async (sleepms, dots) => {
       suffix = '.exe'
     }
   
-    const ipconnecteddevice = getIPConnected(await getADBDevices())
+    let devices = await getADBDevices()
+    const ipconnecteddevice = getIPConnected(devices)
     if(ipconnecteddevice) { console.log(`Already connected: ${ipconnecteddevice.id}. Have fun!`); process.exit(0) }
 
-    console.log('Connect Quest2 via USB and press any key to continue.')
-
-    const devices = await getADBDevices()
+    process.stdout.write('Waiting for you to initially connect the Quest via USB')
+    while(devices.length == 0) {
+      devices = await getADBDevices()
+      await sleep(1000)
+      process.stdout.write('.')
+    }
+    console.log('\nConnected.')
+    // devices = await getADBDevices()
     console.log('Devices:'); logDevices(devices); console.log('')
 
     if(devices.length == 0) { console.log('No devices found. Please connect your Quest via USB to enable WiFi access and restart this script.'); process.exit(1) }
