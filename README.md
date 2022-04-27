@@ -1,6 +1,6 @@
 ﻿# OculusQuest2ADBAutoWifi
 
-run:
+For manual usage, run:
 ```
 git clone https://github.com/SinanAkkoyun/OculusQuest2ADBAutoWifi
 cd OculusQuest2ADBAutoWifi
