@@ -4,7 +4,9 @@
 npm i -g https://github.com/SinanAkkoyun/OculusQuest2ADBAutoWifi
 ```
 Done! Now, call `adbwifisetup` whenever you wanna connect to your Quest.
+(in order to enable scripts on windows run `set-executionpolicy remotesigned` as an admin)
 
+YOU MAY NEED TO MODIFY THE SDK PLATFORM-TOOLS PATH AS I DID NOT IMPLEMENT AN AUTO DETECTION FOR NOW
 
 # Developing
 To develop on this, run:
