@@ -67,7 +67,7 @@ const dotsleep = async (sleepms, dots) => {
   // await keypress()
   try {
     if(adbpath == 'unity') {
-      console.log(await pexec("cd  \"C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.1f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\platform-tools\""))
+      console.log(await pexec("cd  \"C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.11f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\platform-tools\""))
       suffix = '.exe'
     }
   
