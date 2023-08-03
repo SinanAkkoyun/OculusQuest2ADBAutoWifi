@@ -1,4 +1,6 @@
 ﻿# OculusQuest2ADBAutoWifi
+Connect your Oculus device (or any other Android ADB) via a simple command with WiFi!
+
 # Installation:
 ```
 npm i -g https://github.com/SinanAkkoyun/OculusQuest2ADBAutoWifi
